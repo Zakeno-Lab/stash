@@ -38,9 +38,9 @@
 ## Screenshots
 
 <div align="center">
-  <img src="docs/images/main-window.png" alt="Main Window" width="600">
+  <img src="docs/images/stash-demo.gif" alt="Stash Demo" width="600">
   <br>
-  <em>Main clipboard history window with search</em>
+  <em>Stash in action - clipboard history and search</em>
 </div>
 
 ## Requirements
