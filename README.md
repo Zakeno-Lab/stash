@@ -52,7 +52,7 @@
 ## Installation
 
 ### Option 1: Installer (Recommended)
-1. Download the latest `Stash-Setup-*.exe` from [Releases](https://github.com/bkhtmm/stash/releases)
+1. Download the latest `Stash-Setup-*.exe` from [Releases](https://github.com/Zakeno-Lab/stash/releases)
 2. Run the installer
 3. Optionally enable "Start with Windows"
 4. Launch from Start Menu or Desktop shortcut
@@ -60,7 +60,7 @@
 ### Option 2: Build from Source
 ```bash
 # Clone the repository
-git clone https://github.com/bkhtmm/stash.git
+git clone https://github.com/Zakeno-Lab/stash.git
 cd stash
 
 # Build the application
@@ -137,9 +137,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/bkhtmm/stash/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/bkhtmm/stash/discussions)
-- **Documentation**: [Wiki](https://github.com/bkhtmm/stash/wiki)
+- **Issues**: [GitHub Issues](https://github.com/Zakeno-Lab/stash/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Zakeno-Lab/stash/discussions)
+- **Documentation**: [Wiki](https://github.com/Zakeno-Lab/stash/wiki)
 
 ---
 

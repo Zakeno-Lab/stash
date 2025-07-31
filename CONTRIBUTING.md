@@ -143,7 +143,7 @@ This project includes a `CLAUDE.md` file that provides context for AI-assisted d
 
 ## Community
 
-- Join discussions in [GitHub Discussions](https://github.com/bkhtmm/stash/discussions)
+- Join discussions in [GitHub Discussions](https://github.com/Zakeno-Lab/stash/discussions)
 - Follow the project for updates
 - Star the project if you find it useful!
 
