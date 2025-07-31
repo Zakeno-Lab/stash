@@ -1,0 +1,65 @@
+# Test Code Samples for Clipboard
+
+## C# Sample
+```csharp
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Hello, World!");
+    }
+}
+```
+
+## Python Sample
+```python
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(10))
+```
+
+## JavaScript Sample
+```javascript
+const greet = (name) => {
+    console.log(`Hello, ${name}!`);
+};
+
+greet("Synapse");
+```
+
+## SQL Sample
+```sql
+SELECT u.name, COUNT(o.id) as order_count
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+WHERE u.created_at > '2024-01-01'
+GROUP BY u.name
+ORDER BY order_count DESC;
+```
+
+## Simple Code Detection Test
+Copy these individually to test detection:
+
+1. Simple function:
+function calculateSum(a, b) {
+    return a + b;
+}
+
+2. Class definition:
+public class User {
+    private string name;
+    private int age;
+}
+
+3. Regular text (should NOT be detected as code):
+This is just regular text without any code patterns.
+
+4. URL (should be detected as URL, not code):
+https://github.com/anthropics/claude-code
+
+5. Mixed content with some code keywords:
+The user created a new function to handle the request.

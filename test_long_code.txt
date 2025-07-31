@@ -1,0 +1,9 @@
+# Test Long Code Lines
+
+Copy this to test horizontal scrolling:
+
+public async Task<IActionResult> GetUserProfileWithDetailedInformationAndRelatedDataIncludingOrderHistoryAndPreferences(int userId, bool includeOrderHistory = true, bool includePreferences = true, bool includeAddresses = true)
+{
+    var query = _context.Users.Include(u => u.Profile).ThenInclude(p => p.PersonalDetails).Where(u => u.Id == userId && u.IsActive && !u.IsDeleted);
+    return Ok(await query.FirstOrDefaultAsync());
+}
