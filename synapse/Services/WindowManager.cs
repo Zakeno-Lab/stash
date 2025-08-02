@@ -1,5 +1,6 @@
 using System;
 using System.Windows;
+using synapse.Models.Events;
 using synapse.Views;
 
 namespace synapse.Services
@@ -11,11 +12,13 @@ namespace synapse.Services
     {
         private readonly IClipboardService _clipboardService;
         private readonly IMainWindowService _mainWindowService;
+        private readonly IEventBus _eventBus;
 
-        public WindowManager(IClipboardService clipboardService, IMainWindowService mainWindowService)
+        public WindowManager(IClipboardService clipboardService, IMainWindowService mainWindowService, IEventBus eventBus)
         {
             _clipboardService = clipboardService;
             _mainWindowService = mainWindowService;
+            _eventBus = eventBus;
         }
 
         public void ShowMainWindow()
@@ -32,6 +35,9 @@ namespace synapse.Services
                 {
                     mainWindow.WindowState = WindowState.Normal;
                 }
+                
+                // Publish event to notify that window is shown
+                _eventBus.Publish(new WindowShownEvent());
             }
             catch (Exception ex)
             {

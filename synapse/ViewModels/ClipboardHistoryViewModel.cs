@@ -26,7 +26,8 @@ namespace synapse.ViewModels
         private readonly ISearchService _searchService;
         private readonly IProgressiveSearchService _progressiveSearchService;
         private readonly Dispatcher _dispatcher;
-        private readonly IDisposable _eventSubscription;
+        private readonly IDisposable _clipboardItemAddedSubscription;
+        private readonly IDisposable _windowShownSubscription;
         private List<ClipboardItem> _masterHistoryList = new();
         private readonly ObservableCollection<ClipboardItem> _filteredItems = new();
         private readonly CollectionViewSource _groupedViewSource;
@@ -146,8 +147,9 @@ namespace synapse.ViewModels
             // Sort items within groups by timestamp (newest first)
             _groupedViewSource.SortDescriptions.Add(new SortDescription("Timestamp", ListSortDirection.Descending));
             
-            // Subscribe to clipboard item added events
-            _eventSubscription = _eventBus.Subscribe<ClipboardItemAddedEvent>(OnClipboardItemAdded);
+            // Subscribe to events
+            _clipboardItemAddedSubscription = _eventBus.Subscribe<ClipboardItemAddedEvent>(OnClipboardItemAdded);
+            _windowShownSubscription = _eventBus.Subscribe<WindowShownEvent>(OnWindowShown);
             
             _ = LoadHistoryAsync();
         }
@@ -387,12 +389,23 @@ namespace synapse.ViewModels
             });
         }
 
+        private void OnWindowShown(WindowShownEvent eventData)
+        {
+            // Ensure UI updates happen on the UI thread
+            _dispatcher.BeginInvoke(() =>
+            {
+                // Always select the first (newest) item when window is shown
+                SelectedItem = _filteredItems.FirstOrDefault();
+            });
+        }
+
         public void Dispose()
         {
             _searchDebounceTimer?.Stop();
             _searchCancellationTokenSource?.Cancel();
             _searchCancellationTokenSource?.Dispose();
-            _eventSubscription?.Dispose();
+            _clipboardItemAddedSubscription?.Dispose();
+            _windowShownSubscription?.Dispose();
         }
     }
 } 
